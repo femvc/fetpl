@@ -1,0 +1,90 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "fetpl",
+        "scope": null,
+        "escapedName": "fetpl",
+        "name": "fetpl",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "i:\\game\\fetpl123"
+    ]
+  ],
+  "_from": "fetpl@latest",
+  "_id": "fetpl@2.0.6",
+  "_inCache": true,
+  "_location": "/fetpl",
+  "_nodeVersion": "6.11.3",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/fetpl_2.0.6_1522252947241_0.3644746449550369"
+  },
+  "_npmUser": {
+    "name": "haiyang5210",
+    "email": "haiyang5210@gmail.com"
+  },
+  "_npmVersion": "3.10.10",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "fetpl",
+    "scope": null,
+    "escapedName": "fetpl",
+    "name": "fetpl",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/fetpl/-/fetpl-2.0.6.tgz",
+  "_shasum": "2a97c78c292c64dc8a769795db3ba25b08ac2c74",
+  "_shrinkwrap": null,
+  "_spec": "fetpl",
+  "_where": "i:\\game\\fetpl123",
+  "author": {
+    "name": "haiyang5210"
+  },
+  "bugs": {
+    "url": "https://github.com/femvc/fetpl/issues"
+  },
+  "dependencies": {},
+  "description": "一个非常简洁的模板解析引擎.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "2a97c78c292c64dc8a769795db3ba25b08ac2c74",
+    "tarball": "https://registry.npmjs.org/fetpl/-/fetpl-2.0.6.tgz",
+    "fileCount": 9,
+    "unpackedSize": 24627
+  },
+  "homepage": "https://github.com/femvc/fetpl#readme",
+  "keywords": [
+    "template",
+    "express",
+    "js",
+    "node"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "haiyang5210",
+      "email": "haiyang5210@gmail.com"
+    }
+  ],
+  "name": "fetpl",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/femvc/fetpl.git"
+  },
+  "scripts": {
+    "test": "test.js"
+  },
+  "version": "2.0.6"
+}

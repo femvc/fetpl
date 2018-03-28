@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>fetpl</title>
+</head>
+<body>
+
+<script type="text/template" id="tpl">
+
+<h4>1. 直接输出 </h4>
+示例: {\{ it.title }\} 或 {\{ it['title'] }\} <br/>
+输出: {{it.title}} 或 {{it['title']}} <br/>
+
+
+<h4>2. 循环</h4>
+示例1[数组]: <br/>
+{\{ for: index,vv,cc in it.persons }\}<br/>
+&nbsp;&nbsp;{\{ index }\},{\{ cc }\} | {\{ vv.name }\} | {\{ vv.email }\}<br/>
+{\{/for}\} <br/>
+输出: <br/>
+<ul> 
+  {{for: index,vv,cc in it.persons}} 
+  <li>{{index}},{{cc}} | {{vv.name}} | {{vv.email}}</li> 
+  {{/for}} 
+</ul>
+示例2[键值对]:<br/>
+{\{ for: key,value,cc of it.maps }\}<br/>
+&nbsp;&nbsp;{\{ key }\},{\{ value }\},{\{ cc }\}<br/>
+{\{/for}\}
+输出: <br/>
+<ul> 
+  {{for: key,value,cc of it.maps}} 
+  <li>{{key}},{{value}},{{cc}}</li> 
+  {{/for}}
+</ul>
+
+
+<h4>3. 条件判断</h4>
+it.rand = {{it.rand}}<br/>
+示例1: <br/>
+{\{if: it.rand > 60}\}<br/>
+&nbsp;&nbsp;it.rand > 60<br/>
+{\{elif: it.rand > 30 }\}<br/>
+&nbsp;&nbsp;it.rand > 30<br/>
+{\{else:}\}<br/>
+&nbsp;&nbsp;it.rand <= 30<br/>
+{\{/if}\}<br/>
+
+输出:<br/>
+  {{if: it.rand > 60}}
+  <b>it.rand > 60</b>
+  {{elif: it.rand > 30 }}
+  <b>it.rand > 30</b>
+  {{else:}}
+  <b>it.rand <= 30</b>
+  {{/if}}
+<br/>
+
+
+<h4>4. 变量定义</h4>
+示例: <br/>
+  {\{var: age = 15.5 }\}<br/>
+  I am {\{age}\} years old.<br/>
+输出: <br/>
+{{var: age = 15.5 }}
+I am {{age}} years old.
+
+
+<h4>5. 编码/解码（注: 为防止HTML注入式攻击输出内容默认会encodeURI编码）</h4>
+a. 输出特殊标记 {\{ 或 }\} <br/>
+示例: {{'{\{ '}} or {{' }\}'}} <br/>
+输出: {\{ or }\}<br/><br/>
+b. 输出特殊标记 {{'{\{'}} 或 {{'}\}'}} <br/>
+示例: {\{'{{'{\{'}}'}\} or {\{'{{'}\}'}}'}\} <br/>
+输出: {{ '{\{' }} or {{ '}\}' }}<br/><br/>
+c. URI编码/解码: encodeURI/decodeURI<br/>
+{\{ it.html_ogi }\} | {\{ it.html_ogi|decodeURI }\} | {\{ it.html_ogi|decodeURI|encode }\} | {\{ it.html_ogi|decodeURI|encode|encode }\} | <br/>
+输出: <br/>
+{{it.html_ogi}} | {{it.html_ogi|decodeURI}} | {{it.html_ogi|decodeURI|encode}} | {{it.html_ogi|decodeURI|encode|encode}} | <br/>
+{{it.url}} {{it.url|decodeURI}} <br/><br/>
+d. HTML编码/解码: encode/decode<br/>
+示例: <br/>
+{\{ it.html_str }\} | {\{ it.html_str|decodeURI }\} | {\{ it.html_str|decodeURI|decode }\} | <br/>
+输出: <br/>
+{{it.html_str}} | {{it.html_str|decodeURI}} | {{it.html_str|decodeURI|decode}} | <br/>
+
+<h4>6. 引用子模板</h4>
+示例: {\{include: common/footer}\}<br/>
+输出: <br/>
+{{include: common/footer}}
+
+
+<h4>7. 注意以下几种情况</h4>
+it.num = {{it.num}}<br/><br/>
+{\{ it.num == 10 }\} :  {{if: it.num == 10}} yes {{else:}} no {{/if}}<br/>
+{\{ it.num === 10 }\} :  {{if: it.num === 10}} yes {{else:}} no {{/if}}<br/>
+{\{ it.num == '10' }\} :  {{if: it.num == '10'}} yes {{else:}} no {{/if}}<br/>
+{\{ it.num === '10' }\} :  {{if: it.num === '10'}} yes {{else:}} no {{/if}}<br/>
+{\{ 0 == '0' }\} :  {{if: 0 == '0'}} yes {{else:}} no {{/if}}<br/>
+{\{ 0 === '0' }\} :  {{if: 0 === '0'}} yes {{else:}} no {{/if}}<br/>
+{\{ 0 == false }\} :  {{if: 0 == false}} yes {{else:}} no {{/if}}<br/>
+{\{ 0 === false }\} :  {{if: 0 === false}} yes {{else:}} no {{/if}}<br/>
+{\{ 0 == null }\} :  {{if: 0 == null}} yes {{else:}} no {{/if}}<br/>
+{\{ 0 === null }\} :  {{if: 0 === null}} yes {{else:}} no {{/if}}<br/>
+{\{ 0 == undefined }\} :  {{if: 0 == undefined}} yes {{else:}} no {{/if}}<br/>
+{\{ 0 === undefined }\} :  {{if: 0 === undefined}} yes {{else:}} no {{/if}}<br/>
+{\{ null == undefined }\} :  {{if: null == undefined}} yes {{else:}} no {{/if}}<br/>
+{\{ null === undefined }\} :  {{if: null === undefined}} yes {{else:}} no {{/if}}
+
+</script>
+
+<script type="text/template" id="common/footer">
+  This is footer.
+</script>
+  <script src="fetpl.js"></script>
+  <script>
+    var data = {
+      title: 'Hey',
+      message: 'Hello there!',
+      persons: [
+        { name: "haiyang", email: "haiyang5210@gmail.com" },
+        { name: "haiyang2014", email: "wanghaiyang@bilibili.com" }
+      ],
+      maps: { name: "tom", age: 18 },
+      rand: Math.random() * 100,
+      num: 10,
+      html_ogi: '&lt;u&gt; html &lt;/u&gt;',
+      html_str: '&amp;lt;u&amp;gt; html &amp;lt;/u&amp;gt;',
+      url: 'http://www.baidu.com/'
+    }
+    function doit() {
+      var str = document.getElementById('tpl').innerHTML
+      fetpl.render('tpl', data, function(err, out){
+        document.getElementById('output').innerHTML = out
+      })
+    }
+  </script>
+  <h2>模板语法2.0</h2>
+  <div id="output">
+    
+  </div>
+  <script>
+    doit()
+  </script>
+</body>
+</html>
