@@ -135,7 +135,7 @@ d. HTML编码/解码: encode/decode
 {{ it.text_ogi }} | {{ it.text_ogi|decodeURI|encode }} | {{ it.text_ogi|decodeURI|encode|encode }} |   
 
 输出:   
-%3Cu%3E%20text%20%3C%2Fu%3E | <u>&nbsp;text&nbsp;</u> | &amp;lt;u&amp;gt;&amp;nbsp;text&amp;nbsp;&amp;lt;/u&amp;gt; |   
+%3Cu%3E%20text%20%3C%2Fu%3E | <u> text </u> | &lt;u&gt;&nbsp;text&nbsp;&lt;/u&gt; |   
 
 6. 引用子模板 
 <pre id="common/footer">
