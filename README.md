@@ -128,19 +128,19 @@ c. URI编码/解码: encodeURI/decodeURI
 {{ it.text_str }} | {{ it.text_str|decodeURI }} |
 
 输出:   
-%26lt%3Bu%26gt%3B%20text%20%26lt%3B%2Fu%26gt%3B | &lt;u&gt; text &lt;/u&gt; |
+%26lt%3Bu%26gt%3B%20text%20%26lt%3B%2Fu%26gt%3B | <u> text </u> |
 
 d. HTML编码/解码: encode/decode  
 示例:   
 {{ it.text_ogi }} | {{ it.text_ogi|decodeURI|encode }} | {{ it.text_ogi|decodeURI|encode|encode }} |   
 
 输出:   
-%3Cu%3E%20text%20%3C%2Fu%3E | &lt;u&gt;&nbsp;text&nbsp;&lt;/u&gt; | &amp;lt;u&amp;gt;&amp;nbsp;text&amp;nbsp;&amp;lt;/u&amp;gt; |   
+%3Cu%3E%20text%20%3C%2Fu%3E | <u>&nbsp;text&nbsp;</u> | &amp;lt;u&amp;gt;&amp;nbsp;text&amp;nbsp;&amp;lt;/u&amp;gt; |   
 
 6. 引用子模板 
-&lt;pre id="common/footer"&gt;
+<pre id="common/footer">
   This is footer.
-&lt;/pre&gt;  
+</pre>  
 示例: {{include: common/footer}}  
 输出:   
 This is footer.
